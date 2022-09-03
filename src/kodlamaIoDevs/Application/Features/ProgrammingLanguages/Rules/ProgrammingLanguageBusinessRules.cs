@@ -25,5 +25,17 @@ namespace Application.Features.ProgrammingLanguages.Rules
                 await _programmingLanguageRepository.GetListAsync(p => p.Name == name);
             if (result.Items.Any()) throw new BusinessException("Programming Language name exits!!!");
         }
+
+        //public async Task ProgrammingLanguageShouldExistWhenRequest(int id)
+        //{
+        //    ProgrammingLanguage? programmingLanguage =
+        //        await _programmingLanguageRepository.GetAsync(p => p.Id == id);
+        //    if (programmingLanguage == null) throw new BusinessException("Request Programming Language does not exits!!!");
+        //}
+        public void ProgrammingLanguageShouldExistWhenRequest(ProgrammingLanguage programmingLanguage)
+        {
+
+            if (programmingLanguage == null) throw new BusinessException( programmingLanguage.Id + " id Programming Language does not exits!!!");
+        }
     }
 }

@@ -67,7 +67,25 @@ public class EfRepositoryBase<TEntity, TContext> : IAsyncRepository<TEntity>, IR
 
     public async Task<TEntity> UpdateAsync(TEntity entity)
     {
+
+        var local = Context.Set<TEntity>()
+            .Local
+            .FirstOrDefault(entry => entry.Id.Equals(entity.Id));
+
+        // check if local is not null 
+        if (local != null)
+        {
+            // detach
+            Context.Entry(local).State = EntityState.Detached;
+        }
+
+
+        // set Modified flag in your entry
         Context.Entry(entity).State = EntityState.Modified;
+
+
+        //Context.Entry(entity).State = EntityState.Modified;
+        //Context.Entry(entity).State = EntityState.Detached;
         await Context.SaveChangesAsync();
         return entity;
     }
