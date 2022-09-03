@@ -31,9 +31,11 @@ namespace Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLa
 
             public async Task<CreatedProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
+                //burada businessrule isletiliyor
                 await _programmingLanguageBusinessRules.ProgrammingLanguageNameCanNotDublicatedWhenInserted(
                     request.Name);
 
+                //burada language ekleme islemi
                 ProgrammingLanguage mappedProgrammingLanguage = _mapper.Map<ProgrammingLanguage>(request);
                 ProgrammingLanguage createdProgrammingLanguage = await
                     _programmingLanguageRepository.AddAsync(mappedProgrammingLanguage);
