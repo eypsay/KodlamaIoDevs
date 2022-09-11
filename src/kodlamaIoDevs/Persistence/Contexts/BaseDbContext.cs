@@ -13,6 +13,7 @@ namespace Persistence.Contexts
     {
         protected IConfiguration Configuration { get; set; }
         public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
+        public DbSet<SubTechnology> SubTechnologies { get; set; }
 
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
@@ -34,12 +35,37 @@ namespace Persistence.Contexts
                 a.ToTable("ProgrammingLanguages").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
+
+                a.HasMany(p => p.SubTechnologies);
+            });
+
+            modelBuilder.Entity<SubTechnology>(a =>
+            {
+                a.ToTable("SubTechnologies").HasKey(k => k.Id);
+                a.Property(p => p.Id).HasColumnName("Id");
+                a.Property(p => p.ProgramingLanguageId).HasColumnName("ProgramingLanguageId)");
+                a.Property(p => p.Name).HasColumnName("Name");
+                a.Property(p => p.Version).HasColumnName("Version");
+
+                a.HasOne(p => p.ProgrammingLanguage);
             });
 
 
 
-            ProgrammingLanguage[] programmingLanguageEntitySeeds = { new(1, "JavaScript"), new(2, "NodeJs") };
+            ProgrammingLanguage[] programmingLanguageEntitySeeds = { new(1, "JAVA"), new(2, "JavaScript"), new(3, "C#") };
             modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageEntitySeeds);
+
+            SubTechnology[] subTechnologyEntitySeeds =
+            {
+                new(1,1, "SpringBoot","1.0"),
+                new(2,1, "Hibernate","2.0"),
+                new(3,2, "React","1.0"),
+                new(4,2, "NodeJs","2.0"),
+                new(5,3, "WPF","1.0"),
+                new(6,3, "ASP.NET","2.0"),
+
+            };
+            modelBuilder.Entity<SubTechnology>().HasData(subTechnologyEntitySeeds);
 
 
         }

@@ -4,7 +4,7 @@
 
 namespace Persistence.Migrations
 {
-    public partial class Init : Migration
+    public partial class tst : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,16 +20,6 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_ProgrammingLanguages", x => x.Id);
                 });
-
-            migrationBuilder.InsertData(
-                table: "ProgrammingLanguages",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "JavaScript" });
-
-            migrationBuilder.InsertData(
-                table: "ProgrammingLanguages",
-                columns: new[] { "Id", "Name" },
-                values: new object[] { 2, "NodeJs" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

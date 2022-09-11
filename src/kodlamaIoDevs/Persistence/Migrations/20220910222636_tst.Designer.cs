@@ -11,8 +11,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220902183921_Init")]
-    partial class Init
+    [Migration("20220910222636_tst")]
+    partial class tst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,18 +40,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProgrammingLanguages", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "JavaScript"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "NodeJs"
-                        });
                 });
 #pragma warning restore 612, 618
         }
