@@ -10,6 +10,7 @@ using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.SubTechnologies.Rules;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
+using Domain.Entities;
 
 namespace Application
 {
@@ -23,6 +24,10 @@ namespace Application
 
             services.AddScoped<ProgrammingLanguageBusinessRules>();
             services.AddScoped<SubTechnologyBusinessRules>();
+            // UserSocialMedia
+            services.AddScoped<UserBusinessRules>();
+            services.AddScoped<UserSocialMediaBusinessRules>();
+
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
