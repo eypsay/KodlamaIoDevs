@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SubTechnologyController : BaseController
+    public class SubTechnologiesController : BaseController
     {
         [HttpGet]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)

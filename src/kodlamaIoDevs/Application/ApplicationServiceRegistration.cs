@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.SubTechnologies.Rules;
+using Application.Features.Users.Rules;
+using Application.Features.UserSocialMedias.Rules;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using Domain.Entities;

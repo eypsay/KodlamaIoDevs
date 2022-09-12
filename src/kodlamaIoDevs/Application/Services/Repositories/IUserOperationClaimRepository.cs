@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Persistence.Repositories;
-using Domain.Entities;
+using Core.Security.Entities;
 
 namespace Application.Services.Repositories
 {
-    public interface IUserSocialMediaRepository : IAsyncRepository<UserSocialMedia>,IRepository<UserSocialMedia>
+    public interface IUserOperationClaimRepository :IAsyncRepository<UserOperationClaim>,IRepository<UserOperationClaim>
     {
     }
 }
